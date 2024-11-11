@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:news/app_theme.dart';
+import 'package:news/home_screen.dart';
 
 class HomeScreenDrower extends StatelessWidget {
-  const HomeScreenDrower({super.key});
+  void Function(drowerItem) onItemSelected;
+  HomeScreenDrower({super.key, required this.onItemSelected});
 
   @override
   Widget build(BuildContext context) {
@@ -33,12 +35,14 @@ class HomeScreenDrower extends StatelessWidget {
                 child: Column(
                   children: [
                     GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        onItemSelected(drowerItem.categories); 
+                      },
                       child: Row(
                         children: [
                           const Icon(Icons.menu),
                           Text(
-                            'Categories',
+                            '  Categories',
                             style: Theme.of(context)
                                 .textTheme
                                 .titleLarge!
@@ -51,12 +55,14 @@ class HomeScreenDrower extends StatelessWidget {
                       height: 20,
                     ),
                     GestureDetector(
-                      onTap: () { },
+                      onTap: () {
+                        onItemSelected(drowerItem.settings);
+                      },
                       child: Row(
                         children: [
                           const Icon(Icons.settings),
                           Text(
-                            'Settings',
+                            '  Settings',
                             style: Theme.of(context)
                                 .textTheme
                                 .titleLarge!
