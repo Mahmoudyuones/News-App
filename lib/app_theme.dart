@@ -22,8 +22,9 @@ class AppTheme {
       ),
     ),
     textTheme: const TextTheme(
-      titleLarge:
-          TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: white),
-    ),
+        titleLarge:
+            TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: white),
+        titleSmall:
+            TextStyle(fontSize: 14, fontWeight: FontWeight.w400, color: black)),
   );
 }
