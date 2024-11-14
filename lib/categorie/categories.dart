@@ -4,6 +4,8 @@ import 'package:news/categorie/categry_item.dart';
 import 'package:news/models/category_model.dart';
 
 class Categories extends StatelessWidget {
+  void Function(CategoryModel) onCategorySelectd;
+  Categories({required this.onCategorySelectd});
   List<CategoryModel> categories = List.generate(
       6,
       (index) => CategoryModel(
@@ -30,9 +32,16 @@ class Categories extends StatelessWidget {
           ),
           Expanded(
             child: GridView.builder(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2, crossAxisSpacing: 24, mainAxisSpacing: 24),
-              itemBuilder: (_, index) => CategryItem(index: index,category: categories[index],),
+              itemBuilder: (_, index) => GestureDetector(
+                  onTap: () {
+                    onCategorySelectd(categories[index]);
+                  },
+                  child: CategryItem(
+                    index: index,
+                    category: categories[index],
+                  )),
               itemCount: categories.length,
             ),
           )

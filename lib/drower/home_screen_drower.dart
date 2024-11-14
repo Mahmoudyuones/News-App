@@ -20,7 +20,7 @@ class HomeScreenDrower extends StatelessWidget {
               color: AppTheme.primary,
               height: screenSize.height * .2,
               child: Text(
-                'New App!',
+                'News App!',
                 style: Theme.of(context)
                     .textTheme
                     .titleLarge
@@ -36,7 +36,7 @@ class HomeScreenDrower extends StatelessWidget {
                   children: [
                     GestureDetector(
                       onTap: () {
-                        onItemSelected(drowerItem.categories); 
+                        onItemSelected(drowerItem.categories);
                       },
                       child: Row(
                         children: [
