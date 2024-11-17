@@ -4,9 +4,9 @@ import 'package:news/categorie/categry_item.dart';
 import 'package:news/models/category_model.dart';
 
 class Categories extends StatelessWidget {
-  void Function(CategoryModel) onCategorySelectd;
-  Categories({required this.onCategorySelectd});
-  List<CategoryModel> categories = List.generate(
+  final void Function(CategoryModel) onCategorySelectd;
+  Categories({super.key, required this.onCategorySelectd});
+  final List<CategoryModel> categories = List.generate(
       6,
       (index) => CategoryModel(
           id: '$index',
@@ -16,7 +16,7 @@ class Categories extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 24),
+      padding: const EdgeInsets.symmetric(horizontal: 8),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

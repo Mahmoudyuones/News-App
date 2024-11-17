@@ -3,11 +3,13 @@ import 'package:news/app_theme.dart';
 import 'package:news/categorie/categories.dart';
 import 'package:news/drower/home_screen_drower.dart';
 import 'package:news/models/category_model.dart';
-import 'package:news/news/category_details.dart';
+import 'package:news/categorie/category_details.dart';
 import 'package:news/settings/settings_tap.dart';
 
 class HomeScreen extends StatefulWidget {
   static const routeName = '/home';
+
+  const HomeScreen({super.key});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -25,7 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
         appBar: AppBar(
           title: Text(selectdCategory != null
               ? selectdCategory!.name
-              : drawerItemselsectd == drowerItem.settings
+              : drawerItemselsectd == DrowerItem.settings
                   ? 'Settings'
                   : 'News App'),
         ),
@@ -36,7 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ? CategoryDetails(
                 id: selectdCategory!.id,
               )
-            : drawerItemselsectd == drowerItem.categories
+            : drawerItemselsectd == DrowerItem.categories
                 ? Categories(
                     onCategorySelectd: onCategorySelectd,
                   )
@@ -45,10 +47,10 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  drowerItem drawerItemselsectd = drowerItem.categories;
+  DrowerItem drawerItemselsectd = DrowerItem.categories;
   CategoryModel? selectdCategory;
 
-  onDrowerItemSelected(drowerItem selectedItem) {
+  onDrowerItemSelected(DrowerItem selectedItem) {
     selectdCategory = null;
     drawerItemselsectd = selectedItem;
     setState(() {});
@@ -61,7 +63,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 }
 
-enum drowerItem {
+enum DrowerItem {
   categories,
   settings,
 }
