@@ -36,7 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         body: selectdCategory != null
             ? CategoryDetails(
-                id: selectdCategory!.id,
+                categoryId: selectdCategory!.id,
               )
             : drawerItemselsectd == DrowerItem.categories
                 ? Categories(

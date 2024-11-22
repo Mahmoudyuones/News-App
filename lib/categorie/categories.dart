@@ -6,13 +6,21 @@ import 'package:news/models/category_model.dart';
 class Categories extends StatelessWidget {
   final void Function(CategoryModel) onCategorySelectd;
   Categories({super.key, required this.onCategorySelectd});
-  final List<CategoryModel> categories = List.generate(
-      6,
-      (index) => CategoryModel(
-          id: '$index',
-          name: 'Sports',
-          color: AppTheme.red,
-          imageName: 'ball'));
+  final List<CategoryModel> categories = [
+    CategoryModel(
+        id: 'sports', name: 'Sports', color: AppTheme.red, imageName: 'ball'),
+         CategoryModel(
+        id: 'business', name: 'Business', color: AppTheme.red, imageName: 'bussines'),
+         CategoryModel(
+        id: 'entertainment', name: 'Entertainment', color: AppTheme.red, imageName: 'Politics'),
+         CategoryModel(
+        id: 'general', name: 'General', color: AppTheme.red, imageName: 'environment'),
+         CategoryModel(
+        id: 'health', name: 'Health', color: AppTheme.red, imageName: 'health'),
+         CategoryModel(
+        id: 'science', name: 'Science', color: AppTheme.red, imageName: 'science'),
+   
+  ];
   @override
   Widget build(BuildContext context) {
     return Padding(

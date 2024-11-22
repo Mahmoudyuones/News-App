@@ -3,7 +3,7 @@ import 'package:news/models/category_model.dart';
 
 class CategryItem extends StatelessWidget {
   final int index;
-  const CategryItem({super.key, required this.index,required this.category});
+  const CategryItem({super.key, required this.index, required this.category});
   final CategoryModel category;
   @override
   Widget build(BuildContext context) {
@@ -11,16 +11,23 @@ class CategryItem extends StatelessWidget {
       decoration: BoxDecoration(
           color: category.color,
           borderRadius: BorderRadiusDirectional.only(
-            bottomEnd: index.isOdd ? const Radius.circular(24) : const Radius.circular(0),
-            bottomStart:
-                index.isEven ? const Radius.circular(24) : const Radius.circular(0),
+            bottomEnd: index.isOdd
+                ? const Radius.circular(24)
+                : const Radius.circular(0),
+            bottomStart: index.isEven
+                ? const Radius.circular(24)
+                : const Radius.circular(0),
             topEnd: const Radius.circular(24),
             topStart: const Radius.circular(24),
           )),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Image.asset('assets/images/${category.imageName}.png'),
+          Image.asset(
+            'assets/images/${category.imageName}.png',
+            fit: BoxFit.fill,
+            height: 100,
+          ),
           Text(
             category.name,
             style: Theme.of(context)

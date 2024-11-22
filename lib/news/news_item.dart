@@ -1,12 +1,13 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:news/app_theme.dart';
+import 'package:news/models/news_response/news.dart';
 import 'package:news/widgets/loading_indecator.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
 class NewsItem extends StatelessWidget {
-  const NewsItem({super.key});
-
+  const NewsItem(this.news, {super.key});
+  final News news;
   @override
   Widget build(BuildContext context) {
     final fifteenAgo = DateTime.now().subtract(const Duration(minutes: 30));
@@ -19,8 +20,8 @@ class NewsItem extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(10),
             child: CachedNetworkImage(
-              imageUrl:
-                  'https://imgs.search.brave.com/NEROQs0Yl8AsrHgXt1hgYyeKrzVaO2taXdTykqRIG5s/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9lMC4z/NjVkbS5jb20vMjQv/MTAvMzg0eDIxNi9z/a3lzcG9ydHMtbWJh/cHBlLXJlYWwtbWFk/cmlkXzY3MzIzMjEu/anBnPzIwMjQxMDI5/MTgxOTAw',
+              imageUrl: news.urlToImage ??
+                  'https://t3.ftcdn.net/jpg/04/75/01/08/240_F_475010836_qg1pCkS5yT7lXMYSMogKvtu41iKFWTRC.jpg',
               fit: BoxFit.fill,
               placeholder: (_, __) => const LoadingIndecator(),
               errorWidget: (_, __, ___) =>
@@ -30,13 +31,13 @@ class NewsItem extends StatelessWidget {
           const SizedBox(
             height: 4,
           ),
-          Text('BBC news',
+          Text(news.source?.name ?? '',
               style: Theme.of(context)
                   .textTheme
                   .titleSmall
                   ?.copyWith(fontSize: 10, color: AppTheme.grey)),
           Text(
-            "Why are football's biggest clubs starting a new tournament?",
+            news.title ?? '',
             style: Theme.of(context)
                 .textTheme
                 .titleSmall
@@ -45,7 +46,7 @@ class NewsItem extends StatelessWidget {
           Align(
             alignment: AlignmentDirectional.centerEnd,
             child: Text(
-              timeago.format(fifteenAgo),
+              timeago.format(DateTime.parse(news.publishedAt!)),
               style: Theme.of(context).textTheme.titleSmall!.copyWith(
                     color: AppTheme.grey,
                     fontSize: 13,
