@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:news/models/category_model.dart';
+import 'package:news/categorie/data/models/category_model.dart';
 
 class CategryItem extends StatelessWidget {
   final int index;

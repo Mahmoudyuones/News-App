@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:news/app_theme.dart';
-import 'package:news/categorie/categry_item.dart';
-import 'package:news/models/category_model.dart';
+import 'package:news/categorie/view/widgets/categry_item.dart';
+import 'package:news/shared/app_theme.dart';
+import 'package:news/categorie/data/models/category_model.dart';
 
 class Categories extends StatelessWidget {
   final void Function(CategoryModel) onCategorySelectd;
@@ -10,15 +10,15 @@ class Categories extends StatelessWidget {
     CategoryModel(
         id: 'sports', name: 'Sports', color: AppTheme.red, imageName: 'ball'),
          CategoryModel(
-        id: 'business', name: 'Business', color: AppTheme.red, imageName: 'bussines'),
+        id: 'business', name: 'Business', color: AppTheme.broown, imageName: 'bussines'),
          CategoryModel(
-        id: 'entertainment', name: 'Entertainment', color: AppTheme.red, imageName: 'Politics'),
+        id: 'entertainment', name: 'Entertainment', color: AppTheme.babyblue, imageName: 'Politics'),
          CategoryModel(
-        id: 'general', name: 'General', color: AppTheme.red, imageName: 'environment'),
+        id: 'general', name: 'General', color: AppTheme.blue, imageName: 'environment'),
          CategoryModel(
-        id: 'health', name: 'Health', color: AppTheme.red, imageName: 'health'),
+        id: 'health', name: 'Health', color: AppTheme.move, imageName: 'health'),
          CategoryModel(
-        id: 'science', name: 'Science', color: AppTheme.red, imageName: 'science'),
+        id: 'science', name: 'Science', color: AppTheme.yellew, imageName: 'science'),
    
   ];
   @override

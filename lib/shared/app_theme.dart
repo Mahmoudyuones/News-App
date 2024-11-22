@@ -6,7 +6,11 @@ class AppTheme {
   static const Color nevy = Color(0xFF4f5A69);
   static const Color white = Color(0xFFFFFFFF);
   static const Color grey = Color(0xFF79828B);
-
+  static const Color blue = Color(0xFF003E90);
+  static const Color move = Color(0xFFED1E79);
+  static const Color babyblue = Color(0xFF4882CF);
+  static const Color yellew = Color(0xFFF2D352);
+  static const Color broown = Color(0xFFCF7E48);
   static const Color red = Color(0xFFC91C22);
 
   static ThemeData lightTheme = ThemeData(

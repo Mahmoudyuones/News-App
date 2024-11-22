@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:news/app_theme.dart';
+import 'package:news/shared/app_theme.dart';
 
 class TapItem extends StatelessWidget {
   const TapItem({super.key, required this.sourceName, required this.isSelected});
