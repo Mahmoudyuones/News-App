@@ -11,7 +11,8 @@ class AppTheme {
   static const Color babyblue = Color(0xFF4882CF);
   static const Color yellew = Color(0xFFF2D352);
   static const Color broown = Color(0xFFCF7E48);
-  static const Color red = Color(0xFFC91C22);
+  static const Color red = Color(0xFFC91C22); //42505C
+  static const Color whiteDark = Color(0xFF42505C); //42505C
 
   static ThemeData lightTheme = ThemeData(
     primaryColor: primary,

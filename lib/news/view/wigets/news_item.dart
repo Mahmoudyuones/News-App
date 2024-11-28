@@ -26,14 +26,14 @@ class NewsItem extends StatelessWidget {
                   const Icon(Icons.image_not_supported_outlined),
             ),
           ),
-          const SizedBox(
-            height: 4,
-          ),
-          Text(news.source?.name ?? '',
-              style: Theme.of(context)
-                  .textTheme
-                  .titleSmall
-                  ?.copyWith(fontSize: 10, color: AppTheme.grey)),
+            const SizedBox(
+              height: 4,
+            ),
+            Text(news.source?.name ?? '',
+                style: Theme.of(context)
+                    .textTheme
+                    .titleSmall
+                    ?.copyWith(fontSize: 10, color: AppTheme.grey)),
           Text(
             news.title ?? '',
             style: Theme.of(context)

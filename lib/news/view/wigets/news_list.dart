@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:news/news/view/screens/new_details.dart';
 import 'package:news/news/view/wigets/news_item.dart';
 import 'package:news/news/view_model/news_view_model.dart';
 import 'package:news/shared/widgets/error_indecator.dart';
@@ -29,8 +30,15 @@ class _NewsListState extends State<NewsList> {
             return ErrorIndecator(viewModel.errorMessage);
           } else {
             return ListView.builder(
-              itemBuilder: (_, index) => NewsItem(
-                viewModel.newsList[index],
+              itemBuilder: (_, index) => GestureDetector(
+                onTap: () => Navigator.pushNamed(
+                  context,
+                  NewDetails.routeName,
+                  arguments: viewModel.newsList[index],
+                ),
+                child: NewsItem(
+                  viewModel.newsList[index],
+                ),
               ),
               itemCount: viewModel.newsList.length,
             );

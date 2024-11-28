@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:news/news/view/screens/new_details.dart';
 import 'package:news/shared/app_theme.dart';
 import 'package:news/home/view/screens/home_screen.dart';
 
@@ -15,6 +16,7 @@ class NewsApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       routes: {
         HomeScreen.routeName: (_) => const HomeScreen(),
+        NewDetails.routeName:(_) => NewDetails(),
       },
       initialRoute: HomeScreen.routeName,
       theme: AppTheme.lightTheme,
