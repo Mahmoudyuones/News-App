@@ -7,8 +7,9 @@ import 'package:news/shared/widgets/loading_indecator.dart';
 import 'package:provider/provider.dart';
 
 class NewsList extends StatefulWidget {
-  const NewsList(this.sourceId, {super.key});
+  NewsList({required this.sourceId, super.key, required this.searchWord});
   final String sourceId;
+  String searchWord = '';
 
   @override
   State<NewsList> createState() => _NewsListState();
@@ -36,9 +37,12 @@ class _NewsListState extends State<NewsList> {
                   NewDetails.routeName,
                   arguments: viewModel.newsList[index],
                 ),
-                child: NewsItem(
-                  viewModel.newsList[index],
-                ),
+                child: viewModel.newsList[index].description!
+                        .contains(widget.searchWord)
+                    ? NewsItem(
+                        viewModel.newsList[index],
+                      )
+                    : null,
               ),
               itemCount: viewModel.newsList.length,
             );

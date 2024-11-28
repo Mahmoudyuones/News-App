@@ -4,8 +4,9 @@ import 'package:news/news/view/wigets/news_list.dart';
 import 'package:news/sources/view/widgets/tap_item.dart';
 
 class SourceTap extends StatefulWidget {
-  const SourceTap({super.key, required this.sources});
+   SourceTap({super.key, required this.sources,required this.Searchword});
   final List<Source> sources;
+  String Searchword='';
 
   @override
   State<SourceTap> createState() => _SourceTapState();
@@ -42,7 +43,7 @@ class _SourceTapState extends State<SourceTap> {
             ),
           ),
           Expanded(
-            child: NewsList(widget.sources[selectdIndex].id!),
+            child: NewsList(sourceId: widget.sources[selectdIndex].id!,searchWord: widget.Searchword,),
           ),
         ],
       ),

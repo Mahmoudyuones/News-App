@@ -7,7 +7,8 @@ import 'package:provider/provider.dart';
 
 class CategoryDetails extends StatefulWidget {
   final String categoryId;
-  const CategoryDetails({super.key, required this.categoryId});
+  String searchWord='';
+   CategoryDetails({super.key, required this.categoryId,required this.searchWord});
 
   @override
   State<CategoryDetails> createState() => _CategoryDetailsState();
@@ -32,7 +33,7 @@ class _CategoryDetailsState extends State<CategoryDetails> {
           } else if (veiwModel.errorMessage != null) {
             return ErrorIndecator(veiwModel.errorMessage);
           } else {
-            return SourceTap(sources: veiwModel.sources);
+            return SourceTap(sources: veiwModel.sources,Searchword: widget.searchWord,);
           }
         },
       ),

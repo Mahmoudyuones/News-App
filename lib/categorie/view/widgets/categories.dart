@@ -5,21 +5,36 @@ import 'package:news/categorie/data/models/category_model.dart';
 
 class Categories extends StatelessWidget {
   final void Function(CategoryModel) onCategorySelectd;
-  Categories({super.key, required this.onCategorySelectd});
+  String searchWord = '';
+  Categories({super.key, required this.onCategorySelectd,required this.searchWord});
   final List<CategoryModel> categories = [
     CategoryModel(
         id: 'sports', name: 'Sports', color: AppTheme.red, imageName: 'ball'),
-         CategoryModel(
-        id: 'business', name: 'Business', color: AppTheme.broown, imageName: 'bussines'),
-         CategoryModel(
-        id: 'entertainment', name: 'Entertainment', color: AppTheme.babyblue, imageName: 'Politics'),
-         CategoryModel(
-        id: 'general', name: 'General', color: AppTheme.blue, imageName: 'environment'),
-         CategoryModel(
-        id: 'health', name: 'Health', color: AppTheme.move, imageName: 'health'),
-         CategoryModel(
-        id: 'science', name: 'Science', color: AppTheme.yellew, imageName: 'science'),
-   
+    CategoryModel(
+        id: 'business',
+        name: 'Business',
+        color: AppTheme.broown,
+        imageName: 'bussines'),
+    CategoryModel(
+        id: 'entertainment',
+        name: 'Entertainment',
+        color: AppTheme.babyblue,
+        imageName: 'Politics'),
+    CategoryModel(
+        id: 'general',
+        name: 'General',
+        color: AppTheme.blue,
+        imageName: 'environment'),
+    CategoryModel(
+        id: 'health',
+        name: 'Health',
+        color: AppTheme.move,
+        imageName: 'health'),
+    CategoryModel(
+        id: 'science',
+        name: 'Science',
+        color: AppTheme.yellew,
+        imageName: 'science'),
   ];
   @override
   Widget build(BuildContext context) {
@@ -46,10 +61,12 @@ class Categories extends StatelessWidget {
                   onTap: () {
                     onCategorySelectd(categories[index]);
                   },
-                  child: CategryItem(
-                    index: index,
-                    category: categories[index],
-                  )),
+                  child: categories[index].name.contains(searchWord)
+                      ? CategryItem(
+                          index: index,
+                          category: categories[index],
+                        )
+                      : null),
               itemCount: categories.length,
             ),
           )
