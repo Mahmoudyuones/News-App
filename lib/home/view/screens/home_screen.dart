@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:news/categorie/view/widgets/categories.dart';
 import 'package:news/categorie/view/widgets/category_details.dart';
+import 'package:news/categorie/view_model/categorie_view_model.dart';
 import 'package:news/home/view/widgets/search_bar.dart';
 import 'package:news/shared/app_theme.dart';
 import 'package:news/home/view/widgets/home_screen_drower.dart';
@@ -19,6 +20,8 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   bool isSeraching = false;
   String searchText = '';
+  final categorieViewModel = CategorieViewModel();
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -64,6 +67,7 @@ class _HomeScreenState extends State<HomeScreen> {
               )
             : drawerItemselsectd == DrowerItem.categories
                 ? Categories(
+                    categories: categorieViewModel.filterdCategories,
                     onCategorySelectd: onCategorySelectd,
                     searchWord: searchText,
                   )
@@ -77,13 +81,17 @@ class _HomeScreenState extends State<HomeScreen> {
 
   onDrowerItemSelected(DrowerItem selectedItem) {
     selectdCategory = null;
+    isSeraching = false;
     drawerItemselsectd = selectedItem;
+
     setState(() {});
     Navigator.of(context).pop();
   }
 
   onCategorySelectd(CategoryModel category) {
     selectdCategory = category;
+    isSeraching = false;
+    searchText = '';
     setState(() {});
   }
 
@@ -93,7 +101,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   onSearchPressed(String enterdText) {
-    searchText = enterdText;
+    categorieViewModel.onSearchPressed(enterdText);
     setState(() {});
   }
 }

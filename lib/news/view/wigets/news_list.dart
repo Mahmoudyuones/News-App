@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:news/news/data/models/news.dart';
 import 'package:news/news/view/screens/new_details.dart';
 import 'package:news/news/view/wigets/news_item.dart';
 import 'package:news/news/view_model/news_view_model.dart';
@@ -18,9 +19,15 @@ class NewsList extends StatefulWidget {
 class _NewsListState extends State<NewsList> {
   final viewModel = NewsViewModel();
   @override
-  @override
   Widget build(BuildContext context) {
     viewModel.getNews(widget.sourceId);
+    List<News> filterdNewsList = widget.searchWord.isEmpty
+        ? viewModel.newsList
+        : viewModel.newsList
+            .where((news) => news.title!
+                .toLowerCase()
+                .contains(widget.searchWord.toLowerCase()))
+            .toList();
     return ChangeNotifierProvider(
       create: (_) => viewModel,
       child: Consumer<NewsViewModel>(
@@ -37,14 +44,9 @@ class _NewsListState extends State<NewsList> {
                   NewDetails.routeName,
                   arguments: viewModel.newsList[index],
                 ),
-                child: viewModel.newsList[index].description!
-                        .contains(widget.searchWord)
-                    ? NewsItem(
-                        viewModel.newsList[index],
-                      )
-                    : null,
+                child: NewsItem(filterdNewsList[index]),
               ),
-              itemCount: viewModel.newsList.length,
+              itemCount: filterdNewsList.length,
             );
           }
         },

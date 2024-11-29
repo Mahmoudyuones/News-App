@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:news/categorie/view_model/categorie_view_model.dart';
 import 'package:news/shared/app_theme.dart';
 
 class searchBarNews extends StatefulWidget {

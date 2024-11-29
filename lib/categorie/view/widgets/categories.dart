@@ -6,36 +6,13 @@ import 'package:news/categorie/data/models/category_model.dart';
 class Categories extends StatelessWidget {
   final void Function(CategoryModel) onCategorySelectd;
   String searchWord = '';
-  Categories({super.key, required this.onCategorySelectd,required this.searchWord});
-  final List<CategoryModel> categories = [
-    CategoryModel(
-        id: 'sports', name: 'Sports', color: AppTheme.red, imageName: 'ball'),
-    CategoryModel(
-        id: 'business',
-        name: 'Business',
-        color: AppTheme.broown,
-        imageName: 'bussines'),
-    CategoryModel(
-        id: 'entertainment',
-        name: 'Entertainment',
-        color: AppTheme.babyblue,
-        imageName: 'Politics'),
-    CategoryModel(
-        id: 'general',
-        name: 'General',
-        color: AppTheme.blue,
-        imageName: 'environment'),
-    CategoryModel(
-        id: 'health',
-        name: 'Health',
-        color: AppTheme.move,
-        imageName: 'health'),
-    CategoryModel(
-        id: 'science',
-        name: 'Science',
-        color: AppTheme.yellew,
-        imageName: 'science'),
-  ];
+  List<CategoryModel> categories;
+  Categories(
+      {super.key,
+      required this.onCategorySelectd,
+      required this.searchWord,
+      required this.categories});
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -61,12 +38,8 @@ class Categories extends StatelessWidget {
                   onTap: () {
                     onCategorySelectd(categories[index]);
                   },
-                  child: categories[index].name.contains(searchWord)
-                      ? CategryItem(
-                          index: index,
-                          category: categories[index],
-                        )
-                      : null),
+                  child:
+                      CategryItem(index: index, category: categories[index])),
               itemCount: categories.length,
             ),
           )
