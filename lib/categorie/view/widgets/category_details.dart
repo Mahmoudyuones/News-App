@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news/sources/view/widgets/source_tap.dart';
 import 'package:news/shared/widgets/error_indecator.dart';
 import 'package:news/shared/widgets/loading_indecator.dart';
 import 'package:news/sources/view_model/source_view_model.dart';
-import 'package:provider/provider.dart';
+import 'package:news/sources/view_model/sources_state.dart';
 
 class CategoryDetails extends StatefulWidget {
   final String categoryId;
@@ -23,16 +24,18 @@ class _CategoryDetailsState extends State<CategoryDetails> {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
+    return BlocProvider(
       create: (_) => viewModel,
-      child: Consumer<SourceViewModel>(
-        builder: (_, veiwModel, __) {
-          if (veiwModel.isLoading) {
+      child: BlocBuilder<SourceViewModel, SourcesState>(
+        builder: (_, state) {
+          if (state is GetSourcesLoading) {
             return const LoadingIndecator();
-          } else if (veiwModel.errorMessage != null) {
-            return ErrorIndecator(veiwModel.errorMessage);
+          } else if (state is GetSourcesEroor) {
+            return ErrorIndecator(state.message);
+          } else if (state is GetSourcesSuccess) {
+            return SourceTap(sources: state.sources);
           } else {
-            return SourceTap(sources: veiwModel.sources);
+            return const SizedBox();
           }
         },
       ),

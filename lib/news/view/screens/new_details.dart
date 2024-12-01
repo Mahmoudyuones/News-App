@@ -6,6 +6,8 @@ import 'package:url_launcher/url_launcher.dart';
 
 class NewDetails extends StatelessWidget {
   static const routeName = '/news details';
+
+  const NewDetails({super.key});
   @override
   Widget build(BuildContext context) {
     final news = ModalRoute.of(context)!.settings.arguments as News;
