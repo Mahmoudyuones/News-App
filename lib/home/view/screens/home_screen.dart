@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:news/categorie/view/widgets/categories.dart';
 import 'package:news/categorie/view/widgets/category_details.dart';
+import 'package:news/serach/view/screens/custom_search_deleget.dart';
 import 'package:news/shared/app_theme.dart';
 import 'package:news/home/view/widgets/home_screen_drower.dart';
 import 'package:news/categorie/data/models/category_model.dart';
@@ -30,6 +31,17 @@ class _HomeScreenState extends State<HomeScreen> {
               : drawerItemselsectd == DrowerItem.settings
                   ? 'Settings'
                   : 'News App'),
+          actions: [
+            Padding(
+              padding: const EdgeInsetsDirectional.only(end: 20),
+              child: IconButton(
+                  onPressed: () {
+                    showSearch(
+                        context: context, delegate: CustomSearchDeleget());
+                  },
+                  icon: const Icon(Icons.search)),
+            )
+          ],
         ),
         drawer: HomeScreenDrower(
           onItemSelected: onDrowerItemSelected,
