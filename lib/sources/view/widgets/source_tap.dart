@@ -23,8 +23,9 @@ class _SourceTapState extends State<SourceTap> {
             length: widget.sources.length,
             child: TabBar(
               onTap: (index) {
-                selectdIndex = index;
-                setState(() {});
+                setState(() {
+                  selectdIndex = index;
+                });
               },
               isScrollable: true,
               tabAlignment: TabAlignment.start,
@@ -42,7 +43,10 @@ class _SourceTapState extends State<SourceTap> {
             ),
           ),
           Expanded(
-            child: NewsList(widget.sources[selectdIndex].id!),
+            child: NewsList(
+              widget.sources[selectdIndex].id!,
+              key: ValueKey(widget.sources[selectdIndex].id!),
+            ),
           ),
         ],
       ),

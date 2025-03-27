@@ -16,12 +16,23 @@ class NewsList extends StatefulWidget {
 }
 
 class _NewsListState extends State<NewsList> {
-  final viewModel = NewsViewModel();
+  late final NewsViewModel viewModel;
   @override
   void initState() {
+    viewModel = NewsViewModel();
     super.initState();
     viewModel.getNews(widget.sourceId);
     viewModel.onScroll(widget.sourceId);
+  }
+
+  @override
+  void didUpdateWidget(covariant NewsList oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (widget.sourceId != oldWidget.sourceId) {
+      viewModel.newNewsList.clear();
+      viewModel.page = 1;
+      viewModel.getNews(widget.sourceId);
+    }
   }
 
   @override
