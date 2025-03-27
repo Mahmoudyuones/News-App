@@ -1,5 +1,5 @@
 import 'package:news/news/data/models/news.dart';
 
 abstract class NewsDataSource {
-  Future<List<News>> getNews(String newsId);
+  Future<List<News>> getNews(String newsId, int? page);
 }

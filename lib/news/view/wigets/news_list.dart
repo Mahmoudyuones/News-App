@@ -18,9 +18,23 @@ class NewsList extends StatefulWidget {
 class _NewsListState extends State<NewsList> {
   final viewModel = NewsViewModel();
   @override
+  void initState() {
+    super.initState();
+    viewModel.getNews(widget.sourceId);
+    viewModel.onScroll(widget.sourceId);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    viewModel.scrollController.removeListener(
+      () {},
+    );
+    viewModel.scrollController.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    viewModel.getNews(widget.sourceId);
     return BlocProvider(
       create: (_) => viewModel,
       child: BlocBuilder<NewsViewModel, NewsState>(
@@ -30,18 +44,25 @@ class _NewsListState extends State<NewsList> {
           } else if (state is GetNewsError) {
             return ErrorIndecator(state.message);
           } else if (state is GetNewsSuccess) {
-            return ListView.builder(
-              itemBuilder: (_, index) => GestureDetector(
-                onTap: () => Navigator.pushNamed(
-                  context,
-                  NewDetails.routeName,
-                  arguments: state.newsList[index],
+            return Column(
+              children: [
+                Expanded(
+                  child: ListView.builder(
+                    controller: viewModel.scrollController,
+                    itemBuilder: (_, index) => GestureDetector(
+                      onTap: () => Navigator.pushNamed(
+                        context,
+                        NewDetails.routeName,
+                        arguments: state.newsList[index],
+                      ),
+                      child: NewsItem(
+                        state.newsList[index],
+                      ),
+                    ),
+                    itemCount: state.newsList.length,
+                  ),
                 ),
-                child: NewsItem(
-                  state.newsList[index],
-                ),
-              ),
-              itemCount: state.newsList.length,
+              ],
             );
           } else {
             return const SizedBox();
