@@ -6,6 +6,7 @@ import 'package:news/shared/app_theme.dart';
 import 'package:news/home/view/widgets/home_screen_drower.dart';
 import 'package:news/categorie/data/models/category_model.dart';
 import 'package:news/settings/view/wodgets/settings_tap.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomeScreen extends StatefulWidget {
   static const routeName = '/home';
@@ -29,8 +30,8 @@ class _HomeScreenState extends State<HomeScreen> {
           title: Text(selectdCategory != null
               ? selectdCategory!.name
               : drawerItemselsectd == DrowerItem.settings
-                  ? 'Settings'
-                  : 'News App'),
+                  ? AppLocalizations.of(context)!.settings
+                  : AppLocalizations.of(context)!.newsApp),
           actions: [
             Padding(
               padding: const EdgeInsetsDirectional.only(end: 20),

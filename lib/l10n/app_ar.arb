@@ -1,0 +1,15 @@
+{
+    "settings": "الإعدادات",
+    "newsApp": "تطبيق الأخبار",
+    "categories": "الفئات",
+    "newDetails": "تفاصيل جديدة",
+    "viewFullArticle": "عرض المقال بالكامل",
+    "science": "العلوم",
+    "sports": "الرياضة",
+    "health": "الصحة",
+    "general": "عام",
+    "entertainment": "الترفيه",
+    "business": "الأعمال",
+    "pickYourCategoryOfInterest": "اختر فئة اهتمامك",
+    "failedToGetNews": "فشل تحميل الاخبار"
+}

@@ -3,6 +3,7 @@ import 'package:news/news/data/models/news.dart';
 import 'package:news/news/view/wigets/news_item.dart';
 import 'package:news/shared/app_theme.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class NewDetails extends StatelessWidget {
   static const routeName = '/news details';
@@ -20,7 +21,8 @@ class NewDetails extends StatelessWidget {
       ),
       child: Scaffold(
           appBar: AppBar(
-            title: Text(news.source?.name ?? 'New details'),
+            title: Text(
+                news.source?.name ?? AppLocalizations.of(context)!.newDetails),
           ),
           body: Padding(
             padding: const EdgeInsets.all(8.0),
@@ -56,16 +58,16 @@ class NewDetails extends StatelessWidget {
                             final uri = Uri.parse(news.url!);
                             launchUrl(uri);
                           },
-                          child: const Row(
+                          child: Row(
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              Icon(
+                              const Icon(
                                 Icons.play_arrow,
                                 color: AppTheme.black,
                               ),
                               Text(
-                                'View Full Article',
-                                style: TextStyle(
+                                AppLocalizations.of(context)!.viewFullArticle,
+                                style: const TextStyle(
                                     decoration: TextDecoration.underline,
                                     color: AppTheme.black),
                               )

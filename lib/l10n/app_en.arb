@@ -1,0 +1,15 @@
+{
+    "settings": "Settings",
+    "newsApp": "News App",
+    "categories": "Categories",
+    "newDetails": "New Details",
+    "viewFullArticle": "View Full Article",
+    "science": "Science",
+    "sports": "Sports",
+    "health": "Health",
+    "general": "General",
+    "entertainment": "Entertainment",
+    "business": "Business",
+    "pickYourCategoryOfInterest": "Pick your category of interest",
+    "failedToGetNews": "Failed to get News"
+}
