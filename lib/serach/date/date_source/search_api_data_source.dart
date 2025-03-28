@@ -14,8 +14,8 @@ class SearchApiDataSource extends SearchDateSource {
       'apiKey': APIConstant.apiKey,
       'q': keyword,
     });
-    final Response = await http.get(uri);
-    final json = jsonDecode(Response.body);
+    final response = await http.get(uri);
+    final json = jsonDecode(response.body);
     final searchedNewsResponse = NewsResponse.fromJson(json);
     if (searchedNewsResponse.status == 'ok' &&
         searchedNewsResponse.news != null) {

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:news/shared/app_theme.dart';
 import 'package:news/home/view/screens/home_screen.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomeScreenDrower extends StatelessWidget {
   final Function(DrowerItem) onItemSelected;
@@ -19,7 +20,7 @@ class HomeScreenDrower extends StatelessWidget {
             color: AppTheme.primary,
             height: screenSize.height * .2,
             child: Text(
-              'News App!',
+              AppLocalizations.of(context)!.newsApp,
               style: Theme.of(context)
                   .textTheme
                   .titleLarge
@@ -41,7 +42,7 @@ class HomeScreenDrower extends StatelessWidget {
                       children: [
                         const Icon(Icons.menu),
                         Text(
-                          '  Categories',
+                          '  ${AppLocalizations.of(context)!.categories}',
                           style: Theme.of(context)
                               .textTheme
                               .titleLarge!
@@ -61,7 +62,7 @@ class HomeScreenDrower extends StatelessWidget {
                       children: [
                         const Icon(Icons.settings),
                         Text(
-                          '  Settings',
+                          '  ${AppLocalizations.of(context)!.settings}',
                           style: Theme.of(context)
                               .textTheme
                               .titleLarge!

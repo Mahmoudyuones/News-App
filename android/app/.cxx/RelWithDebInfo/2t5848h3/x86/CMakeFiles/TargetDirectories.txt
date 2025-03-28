@@ -1,0 +1,2 @@
+D:/flutter/News-App/android/app/.cxx/RelWithDebInfo/2t5848h3/x86/CMakeFiles/edit_cache.dir
+D:/flutter/News-App/android/app/.cxx/RelWithDebInfo/2t5848h3/x86/CMakeFiles/rebuild_cache.dir

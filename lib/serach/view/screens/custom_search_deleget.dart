@@ -11,6 +11,7 @@ import 'package:news/shared/app_theme.dart';
 import 'package:news/shared/widgets/error_indecator.dart';
 import 'package:news/shared/widgets/loading_indecator.dart';
 import 'package:news/sources/data/models/source.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CustomSearchDeleget extends SearchDelegate {
   @override
@@ -53,7 +54,8 @@ class CustomSearchDeleget extends SearchDelegate {
           if (state is GetSearchedNewsLoading) {
             return const LoadingIndecator();
           } else if (state is GetSearchedNewsError) {
-            return const ErrorIndecator('Failed to get News');
+            return ErrorIndecator(
+                AppLocalizations.of(context)!.failedToGetNews);
           } else if (state is GetSearchedNewsSuccess) {
             return ListView.builder(
               itemBuilder: (_, index) => GestureDetector(
