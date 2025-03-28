@@ -40,6 +40,7 @@ class _LanguageDropdownBottonState extends State<LanguageDropdownBotton> {
           onChanged: (selected) {
             if (selected != null) {
               settingsProvider.changeLanguage(selected.code);
+              settingsProvider.saveLanguage(selected.code);
               setState(() {});
             }
           },

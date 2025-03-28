@@ -18,6 +18,7 @@ class NewsApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SettingsProvider settingsProvider = Provider.of<SettingsProvider>(context);
+    print(settingsProvider.languaegCode);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       routes: {
