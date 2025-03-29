@@ -17,7 +17,6 @@ class SourceApiDataSource extends SourcesDataSource {
         'category': categoryId,
       },
     );
-    print(uri);
     final respons = await http.get(uri);
     final json = jsonDecode(respons.body);
     final sourcesResponse = SourcesResponse.fromJson(json);
